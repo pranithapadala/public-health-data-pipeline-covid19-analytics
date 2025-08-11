@@ -50,9 +50,4 @@ v
   
 
 
-## Dashboard Preview
-
-![Dashboard Screenshot](./images/dashboard_preview.png)
-
-
 
