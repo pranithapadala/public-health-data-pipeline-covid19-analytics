@@ -17,12 +17,18 @@ This project implements a complete ETL pipeline to collect, process, store, and 
 
 ## Architecture Diagram
 
-[Data Source (NYT CSV)] --> [Airflow ETL Pipeline] --> [AWS S3 (Raw Data)]
+[Data Source (NYT CSV)] --> [Airflow ETL Pipeline] --> [AWS S3 (Raw Data)] 
+
 |
+
 v
+
 [PostgreSQL Data Warehouse]
+
 |
+
 v
+
 [Tableau Dashboard]
 
 
@@ -47,6 +53,8 @@ v
 
 3. **Tableau Dashboard:**  
    - Connects to PostgreSQL to visualize trends.
+   - (COVID_PUBLICDATA_ANALYTICS.twb)
+     
   
 
 
