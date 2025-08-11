@@ -49,13 +49,6 @@ v
    - Connects to PostgreSQL to visualize trends.
   
 
-## Folder Structure
-├── dags/ # Airflow DAGs and pipeline scripts
-├── images/ # Dashboard screenshots and visuals
-├── docker-compose.yml # Container orchestration for Airflow and Postgres
-├── README.md # Project overview and documentation
-└── requirements.txt # Python dependencies
-
 
 ## Dashboard Preview
 
