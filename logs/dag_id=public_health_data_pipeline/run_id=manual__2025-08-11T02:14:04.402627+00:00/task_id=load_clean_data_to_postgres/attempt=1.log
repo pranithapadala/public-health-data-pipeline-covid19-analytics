@@ -1,0 +1,29 @@
+[2025-08-11T02:14:07.803+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: public_health_data_pipeline.load_clean_data_to_postgres manual__2025-08-11T02:14:04.402627+00:00 [queued]>
+[2025-08-11T02:14:07.806+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: public_health_data_pipeline.load_clean_data_to_postgres manual__2025-08-11T02:14:04.402627+00:00 [queued]>
+[2025-08-11T02:14:07.806+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-08-11T02:14:07.810+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): load_clean_data_to_postgres> on 2025-08-11 02:14:04.402627+00:00
+[2025-08-11T02:14:07.813+0000] {standard_task_runner.py:60} INFO - Started process 191 to run task
+[2025-08-11T02:14:07.814+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'public_health_data_pipeline', 'load_clean_data_to_postgres', 'manual__2025-08-11T02:14:04.402627+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/covid_data_pipeline.py', '--cfg-path', '/tmp/tmpivci0z0p']
+[2025-08-11T02:14:07.815+0000] {standard_task_runner.py:88} INFO - Job 20: Subtask load_clean_data_to_postgres
+[2025-08-11T02:14:07.839+0000] {task_command.py:423} INFO - Running <TaskInstance: public_health_data_pipeline.load_clean_data_to_postgres manual__2025-08-11T02:14:04.402627+00:00 [running]> on host 0ddfd342255f
+[2025-08-11T02:14:07.955+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='public_health_data_pipeline' AIRFLOW_CTX_TASK_ID='load_clean_data_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2025-08-11T02:14:04.402627+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-11T02:14:04.402627+00:00'
+[2025-08-11T02:14:07.957+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-08-11T02:14:07.957+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-08-11T02:14:07.958+0000] {sql.py:450} INFO - Running statement: TRUNCATE TABLE covid_state_metrics;, parameters: None
+[2025-08-11T02:14:07.963+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/covid_data_pipeline.py", line 83, in load_clean_data_to_postgres
+    pg_hook.copy_expert(
+TypeError: copy_expert() got an unexpected keyword argument 'file'
+[2025-08-11T02:14:07.968+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=public_health_data_pipeline, task_id=load_clean_data_to_postgres, execution_date=20250811T021404, start_date=20250811T021407, end_date=20250811T021407
+[2025-08-11T02:14:07.973+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 20 for task load_clean_data_to_postgres (copy_expert() got an unexpected keyword argument 'file'; 191)
+[2025-08-11T02:14:07.992+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-08-11T02:14:08.000+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,71 @@
+[2025-08-11T01:38:17.709+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: public_health_data_pipeline.stage_raw_data_to_s3 manual__2025-08-11T01:38:14.579750+00:00 [queued]>
+[2025-08-11T01:38:17.715+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: public_health_data_pipeline.stage_raw_data_to_s3 manual__2025-08-11T01:38:14.579750+00:00 [queued]>
+[2025-08-11T01:38:17.716+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-08-11T01:38:17.726+0000] {taskinstance.py:2191} INFO - Executing <Task(_PythonDecoratedOperator): stage_raw_data_to_s3> on 2025-08-11 01:38:14.579750+00:00
+[2025-08-11T01:38:17.729+0000] {standard_task_runner.py:60} INFO - Started process 210 to run task
+[2025-08-11T01:38:17.732+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'public_health_data_pipeline', 'stage_raw_data_to_s3', 'manual__2025-08-11T01:38:14.579750+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/covid_data_pipeline.py', '--cfg-path', '/tmp/tmp04imqskv']
+[2025-08-11T01:38:17.733+0000] {standard_task_runner.py:88} INFO - Job 21: Subtask stage_raw_data_to_s3
+[2025-08-11T01:38:17.765+0000] {task_command.py:423} INFO - Running <TaskInstance: public_health_data_pipeline.stage_raw_data_to_s3 manual__2025-08-11T01:38:14.579750+00:00 [running]> on host 055ca9c998a4
+[2025-08-11T01:38:17.934+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='public_health_data_pipeline' AIRFLOW_CTX_TASK_ID='stage_raw_data_to_s3' AIRFLOW_CTX_EXECUTION_DATE='2025-08-11T01:38:14.579750+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-11T01:38:14.579750+00:00'
+[2025-08-11T01:38:17.943+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-11T01:38:19.217+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/decorators/base.py", line 241, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/covid_data_pipeline.py", line 57, in stage_raw_data_to_s3
+    s3_hook.load_string(
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 137, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 91, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 1141, in load_string
+    self._upload_file_obj(f, key, bucket_name, replace, encrypt, acl_policy)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 1224, in _upload_file_obj
+    client.upload_fileobj(
+  File "/home/airflow/.local/lib/python3.9/site-packages/boto3/s3/inject.py", line 642, in upload_fileobj
+    return future.result()
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/tasks.py", line 139, in __call__
+    return self._execute_main(kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/tasks.py", line 162, in _execute_main
+    return_value = self._main(**kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/s3transfer/upload.py", line 764, in _main
+    client.put_object(Bucket=bucket, Key=key, Body=body, **extra_args)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/client.py", line 553, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/client.py", line 989, in _make_api_call
+    http, parsed_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/client.py", line 1015, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/endpoint.py", line 198, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/endpoint.py", line 134, in create_request
+    self._event_emitter.emit(
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/signers.py", line 105, in handler
+    return self.sign(operation_name, request)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/signers.py", line 195, in sign
+    auth.add_auth(request)
+  File "/home/airflow/.local/lib/python3.9/site-packages/botocore/auth.py", line 418, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+[2025-08-11T01:38:19.224+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=public_health_data_pipeline, task_id=stage_raw_data_to_s3, execution_date=20250811T013814, start_date=20250811T013817, end_date=20250811T013819
+[2025-08-11T01:38:19.233+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 21 for task stage_raw_data_to_s3 (Unable to locate credentials; 210)
+[2025-08-11T01:38:19.272+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-08-11T01:38:19.287+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
