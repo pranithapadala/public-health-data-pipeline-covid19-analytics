@@ -19,15 +19,13 @@ This project implements a complete ETL pipeline to collect, process, store, and 
 
 [Data Source (NYT CSV)] --> [Airflow ETL Pipeline] --> [AWS S3 (Raw Data)] 
 
-|
-
-v
+           |
+           v
 
 [PostgreSQL Data Warehouse]
 
-|
-
-v
+           |
+           v
 
 [Tableau Dashboard]
 
