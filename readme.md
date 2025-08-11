@@ -1,6 +1,6 @@
 # Public Health Data Pipeline - COVID-19 Analytics
 
-![Dashboard Preview](Covid_data_dahboard.png)
+![Dashboard Preview](Covid_data_dashboard.png)
 
 ## Project Overview
 
